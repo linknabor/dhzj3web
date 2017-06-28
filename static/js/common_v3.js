@@ -16,6 +16,7 @@ var MasterConfig = function() {
         appId: "wx89c743b2fa762a2c",
         oauthUrl: "https://open.weixin.qq.com/connect/oauth2/authorize?",
         oauthUrlPostFix:"&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect",
+		oauthUrlPostSilent:"&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
         bindAppId: "wxe8dea53aad1a93b9",
 
         baidu_map_key:"RUWUgrEEF5VjoaWsstMMZwOD",
@@ -331,7 +332,7 @@ var common = {
         if (common.alert("code: " + o), void 0 === o) {
             var n = location.origin + common.removeParamFromUrl(["from","bind", "code", "share_id", "isappinstalled", "state", "m", "c", "a"]),
             t = MasterConfig.C("oauthUrl"),
-            end = MasterConfig.C("oauthUrlPostFix");
+            end = MasterConfig.C("oauthUrlPostSilent");
             location.href = t + "appid=" + MasterConfig.C("appId") + "&redirect_uri=" + encodeURIComponent(n) +end+ "#wechat_redirect"
         } else common.alert("start api login"),
         this.invokeApi("POST", "loginBaofang/" + o, null,
@@ -409,7 +410,7 @@ var common = {
         var e = MasterConfig.C("appId");
         var n = location.origin + common.removeParamFromUrl(["from", "code", "share_id", "isappinstalled", "state", "m", "c", "a"]),
         t = MasterConfig.C("oauthUrl");
-        end = MasterConfig.C("oauthUrlPostFix");
+        end = MasterConfig.C("oauthUrlPostSilent");
         location.href = t + "appid=" + e + "&redirect_uri=" + encodeURIComponent(n) +end+ "#wechat_redirect";
     },
 
