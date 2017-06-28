@@ -43,7 +43,7 @@ avalon.ready(function() {
 		var title = rule.name;
 		var link=MasterConfig.C('basePageUrl')+"group/rgroupinvite.html?ruleId="+o.ruleId;
 		var img=product.smallPicture;
-		var desc="我在汤臣豪园三期参与了一个"+rule.name+"的团购，大家一起来参与吧";
+		var desc="我在东湖家园参与了一个"+rule.name+"的团购，大家一起来参与吧";
 		initShareConfig(title,link,img,desc);
 	}
     function product(productId) {

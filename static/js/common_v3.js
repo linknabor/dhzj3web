@@ -20,7 +20,7 @@ var MasterConfig = function() {
         bindAppId: "wxe8dea53aad1a93b9",
 
         baidu_map_key:"RUWUgrEEF5VjoaWsstMMZwOD",
-        shop_name: "汤臣豪园三期",
+        shop_name: "东湖家园",
 
         is_debug:true,
         statistics: {

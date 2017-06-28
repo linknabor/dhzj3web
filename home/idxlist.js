@@ -27,7 +27,7 @@ avalon.ready(function() {
 
 	getCurrentType();
     initWechat(['onMenuShareTimeline','onMenuShareAppMessage']);
-    initShareConfig("点亮生活，尽在汤臣豪园三期！",MasterConfig.C("basePageUrl")+"home/index.html?v=20160229",MasterConfig.C("basePageUrl")+"/static/images/share_home.jpg","");
+    initShareConfig("点亮生活，尽在东湖家园！",MasterConfig.C("basePageUrl")+"home/index.html?v=20160229",MasterConfig.C("basePageUrl")+"/static/images/share_home.jpg","");
     avalon.scan(document.body),
     FastClick.attach(document.body),
     common.setTitle("生活服务");
