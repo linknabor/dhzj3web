@@ -40,7 +40,7 @@ avalon.ready(function() {
        banners:[],
        zixuns:[],
        city:"上海",
-       xiaoquName:"东湖家园"
+       xiaoquName:"东湖e家园"
     });
     
     query();
@@ -50,7 +50,7 @@ avalon.ready(function() {
     FastClick.attach(document.body),
     common.setTitle("物业服务");
     initWechat(['onMenuShareTimeline','onMenuShareAppMessage']);
-    initShareConfig("互帮、互助、分享的社区大家庭，尽在东湖家园邻里之家!",MasterConfig.C("basePageUrl")+"wuye/index.html?v=20160229",MasterConfig.C("basePageUrl")+"/static/images/share_logo3.png","邻里趣事，快来分享");
+    initShareConfig("互帮、互助、分享的社区大家庭，尽在东湖e家园邻里之家!",MasterConfig.C("basePageUrl")+"wuye/index.html?v=20160229",MasterConfig.C("basePageUrl")+"/static/images/share_logo3.png","邻里趣事，快来分享");
     checkFromShare();
     
 });

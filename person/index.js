@@ -78,7 +78,7 @@ avalon.ready(function() {
     updateCouponStatus();
     avalon.scan(document.body);
     initWechat(['onMenuShareTimeline','onMenuShareAppMessage']);
-    initShareConfig("我的社区，我的家，我在东湖家园！",MasterConfig.C("basePageUrl")+"person/index.html?v=20160301",MasterConfig.C("basePageUrl")+"/static/images/share_logo4.png","东湖家园，我的生活管家");
+    initShareConfig("我的社区，我的家，我在东湖e家园！",MasterConfig.C("basePageUrl")+"person/index.html?v=20160301",MasterConfig.C("basePageUrl")+"/static/images/share_logo4.png","东湖e家园，我的生活管家");
     FastClick.attach(document.body);
     common.setTitle("个人中心");
 });

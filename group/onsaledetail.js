@@ -77,7 +77,7 @@ avalon.ready(function() {
 			console.log(JSON.stringify(n));
 			o.product = n.result;
 		    setTimeout(initSwipe,1000);
-			initShareConfig(o.rule.name,MasterConfig.C("basePageUrl")+"group/onsaledetail.html?ruleId="+o.ruleId,o.product.smallPicture,"快来参加东湖家园的优惠商品抢购吧");
+			initShareConfig(o.rule.name,MasterConfig.C("basePageUrl")+"group/onsaledetail.html?ruleId="+o.ruleId,o.product.smallPicture,"快来参加东湖e家园的优惠商品抢购吧");
         },
         r = function(n) {
 			console.log("error");
