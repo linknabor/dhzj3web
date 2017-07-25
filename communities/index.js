@@ -239,7 +239,7 @@ avalon.ready(function() {
 		}else if("8"==o.category){
 			o.categoryCN="都市丽人";
 		}else{
-			o.categoryCN="邻里叽歪";
+			o.categoryCN="管家服务";
 		}
 	}
 	
