@@ -54,12 +54,12 @@ avalon.ready(function() {
         
         
        jumpToDetail:function(mid) {
-    	   if(mid==15){
-    		   window.location.href="http://mp.weixin.qq.com/s?__biz=MzA3Njk4ODgwMA==&mid=406333448&idx=1&sn=9b318dec9225d8fc1ce28b7a52007773#rd";
-    	   }else if(mid==16){
-    		   window.location.href="http://mp.weixin.qq.com/s?__biz=MzA3Njk4ODgwMA==&mid=407927486&idx=1&sn=c1f51214b1947b1b222af9a18e5593d6#rd";
-    	   }else if(mid==17){
-    		   window.location.href="http://mp.weixin.qq.com/s?__biz=MzA3Njk4ODgwMA==&mid=410063784&idx=1&sn=558b520c28f984ad7c0ed2a6ef692faf#rd";
+    	   if(mid==29){
+    		   window.location.href="https://mp.weixin.qq.com/s/3N-yinJvq0jDJmh6fd6scw";
+    	   }else if(mid==30){
+    		   window.location.href="https://mp.weixin.qq.com/s/WTgWmG5lknKExBmOsughmQ";
+    	   }else if(mid==31){
+    		   window.location.href="https://mp.weixin.qq.com/s/-6gMOUi3vWJMRraOqtC2wQ";
        	   }else{
     		   window.location.href="message.html?messageId="+mid;
     	   }
