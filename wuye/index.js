@@ -91,7 +91,7 @@ avalon.ready(function() {
     		o.tabs[0].active = false;
     		o.tabs[1].active = true;
     		o.tabs[2].active = false;
-    	}elseif("2"==section){
+    	}else if("2"==section){
     		o.tabs[0].active = false;
     		o.tabs[1].active = false;
     		o.tabs[2].active = true;
