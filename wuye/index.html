@@ -330,7 +330,7 @@
         		<span class="notice-tab-title" ms-repeat-tab="tabs" ms-class-active="tab.active" ms-click="changeTab($index)">{{tab.name}}</span>
     		</div>
         	<div ms-visible="tabs[0].active">
-				<div class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
+				<div class="section3_zixuns" ms-click="jumpToDetail(zixuns[0].id)">
 					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixuns[0].smallImage}}"/></div>
 					<div class="section3_sub_main_right">
 						<div class="section3_sub_title">{{zixuns[0].title}}</div>
@@ -340,7 +340,7 @@
 			</div>
         	</div>
         	<div ms-visible="tabs[1].active">
-        		<div class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
+        		<div class="section3_zixuns" ms-click="jumpToDetail(zixuns[1].id)">
 					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixuns[1].smallImage}}"/></div>
 					<div class="section3_sub_main_right">
 						<div class="section3_sub_title">{{zixuns[1].title}}</div>
@@ -350,7 +350,7 @@
 			</div>
 			<!-- ms-repeat-zixun="zixuns" -->
         	<div ms-visible="tabs[2].active">
-        		<div class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
+        		<div class="section3_zixuns" ms-click="jumpToDetail(zixuns[2].id)">
 					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixuns[2].smallImage}}"/></div>
 					<div class="section3_sub_main_right">
 						<div class="section3_sub_title">{{zixuns[2].title}}</div>
