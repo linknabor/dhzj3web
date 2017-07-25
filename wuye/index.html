@@ -330,24 +330,35 @@
         		<span class="notice-tab-title" ms-repeat-tab="tabs" ms-class-active="tab.active" ms-click="changeTab($index)">{{tab.name}}</span>
     		</div>
         	<div ms-visible="tabs[0].active">
-	                <div ms-repeat-zixun="zixuns" class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
-	                    <div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixun.smallImage}}"/></div>
-	                    <div class="section3_sub_main_right">
-	                        <div class="section3_sub_title">{{zixun.title}}</div>
-	                        <div class="section3_sub_content">{{zixun.summary}}</div>
-	                    </div>                 
-	                </div>
-        		</div>
+				<div class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
+					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixuns[0].smallImage}}"/></div>
+					<div class="section3_sub_main_right">
+						<div class="section3_sub_title">{{zixuns[0].title}}</div>
+						<div class="section3_sub_content">{{zixuns[0].summary}}</div>
+					</div>
+				</div>
+			</div>
         	</div>
         	<div ms-visible="tabs[1].active">
-        		</div>
-        	</div>
+        		<div class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
+					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixuns[1].smallImage}}"/></div>
+					<div class="section3_sub_main_right">
+						<div class="section3_sub_title">{{zixuns[1].title}}</div>
+						<div class="section3_sub_content">{{zixuns[1].summary}}</div>
+					</div>
+				</div>
+			</div>
+			<!-- ms-repeat-zixun="zixuns" -->
         	<div ms-visible="tabs[2].active">
-        		</div>
+        		<div class="section3_zixuns" ms-click="jumpToDetail(zixun.id)">
+					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixuns[2].smallImage}}"/></div>
+					<div class="section3_sub_main_right">
+						<div class="section3_sub_title">{{zixuns[2].title}}</div>
+						<div class="section3_sub_content">{{zixuns[2].summary}}</div>
+					</div>
+				</div>
         	</div>
-        </div>
-		
-    </div>
+    	</div>
     
 <div style="height: 90px;position: relative;">&nbsp;</div>
 
