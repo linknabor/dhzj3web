@@ -26,6 +26,33 @@ avalon.ready(function() {
 	var a = 0,
     o = avalon.define({
         $id: "root",
+        
+        tabs: [
+           {
+               name: '物业板块',
+               active: true
+           },
+           {
+               name: '业委会板块',
+               active: false
+           },
+           {
+               name: '居委会板块',
+               active: false
+           }
+        ],
+        
+        changeTab: function(idx) {
+            for (var i = 0, len = o.tabs.length; i < len; i++) {
+                o.tabs[i].active = false;
+            }
+            o.tabs[idx].active = true;
+            hasNext=true;
+            isloadPage=false;
+        },
+
+        
+        
        jumpToDetail:function(mid) {
     	   if(mid==15){
     		   window.location.href="http://mp.weixin.qq.com/s?__biz=MzA3Njk4ODgwMA==&mid=406333448&idx=1&sn=9b318dec9225d8fc1ce28b7a52007773#rd";

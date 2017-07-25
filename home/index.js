@@ -1,4 +1,5 @@
 avalon.ready(function() {
+	
 	function query(){
 		common.invokeApi("GET","pageconfig/daojia",null,null,function(n){
 			o.banners = n.result.banners;
@@ -12,6 +13,7 @@ avalon.ready(function() {
 	}
     var o = avalon.define({
         $id: "root",
+        
         banners:[],
         jingxuan1:{},
         jingxuan2:{},
