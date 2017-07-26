@@ -8,7 +8,7 @@ var MasterConfig = function() {
         oauthUrl: "https://open.weixin.qq.com/connect/oauth2/authorize?",
         oauthUrlPostFix:"&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect",
 		oauthUrlPostSilent:"&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
-        bindAppId: "wxe8dea53aad1a93b9",
+        bindAppId: "wx89c743b2fa762a2c",
         
 		payPageFolder:"https://www.e-shequ.com/pay/",
         payPageSuffix:"zj3",		//hexie
@@ -123,9 +123,6 @@ function dealWithAjaxData(o, e, i, r) {
         case "40001":
             reLogin();
             break;
-        case "40002":
-            toBindLink();
-            break;
         case "42032":
             common.wechatAuthorize();
             break;
@@ -227,16 +224,6 @@ function checkCodeAndLogin(){
 		return true;
 	}
 }
-function toBindLink(){
-    var p = common.removeParamObject(["from","bind", "code", "share_id", "isappinstalled", "state", "m", "c", "a"]);
-    p = common.addParamObject(p,"bind","true");
-    var n = location.origin + location.pathname + common.buildUrlParamString(p),
-    t = MasterConfig.C("oauthUrl");
-    end = MasterConfig.C("oauthUrlPostFix");
-    var url = t + "appid=" + MasterConfig.C("bindAppId") + "&redirect_uri=" + encodeURIComponent(n) +end+ "#wechat_redirect";
-    console.log(url);
-    location.href = url;
-}
 function checkBindAndBind(){
     var getData = common._GET();
     var b = getData.bind;
@@ -259,6 +246,11 @@ function updateUserStatus(user) {
     setCookie("tel", user.tel, duration);
     setCookie("shareCode", user.shareCode, duration);
 }
+function updateAuthStatus(isAuth) {
+	var duration = new Date().getTime()/1000 + 3600*24*30;
+    setCookie("isAuth", isAuth, duration);
+}
+
 function updateCurrentAddrId(addrId){
 	var duration = new Date().getTime()/1000 + 3600*24*30;
     setCookie("currentAddrId", addrId, duration);
@@ -271,6 +263,30 @@ function isRegisted(){
 function toRegisterAndBack(){
 	var n = location.origin + common.removeParamFromUrl(["from", "bind", "code", "share_id", "isappinstalled", "state", "m", "c", "a"]);
 	location.href=MasterConfig.C('basePageUrl')+"person/register.html?comeFrom="+encodeURIComponent(n);
+}
+
+function checkBindMain(){
+	
+	var isAuth = getCookie("getCookie");
+	if("1"==isAuth){
+		return;
+	}
+	var o = common._GET().code;
+    if (common.alert("code: " + o), void 0 === o) {
+        var n = location.origin + common.removeParamFromUrl(["from","bind", "code", "share_id", "isappinstalled", "state", "m", "c", "a"]),
+        t = MasterConfig.C("oauthUrl"),
+        end = MasterConfig.C("oauthUrlPostSilent");
+        location.href = t + "appid=" + MasterConfig.C("bindAppId") + "&redirect_uri=" + encodeURIComponent(n) +end+ "#wechat_redirect"
+    } else common.alert("start get auth from main "),
+    this.invokeApi("POST", "bindMain/" + o, null,
+    function() {
+        AJAXFlag = !1
+    },
+    function(x) {
+    	updateAuthStatus(x);
+        AJAXFlag = !0,
+        location.href = location.origin +common.removeParamFromUrl(["code"]);
+    })
 }
 
 AJAXFlag = !0;
