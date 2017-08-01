@@ -3,7 +3,9 @@ avalon.ready(function() {
 	function query(type){
         common.invokeApi("GET", "messages/"+page, null, null, function(n) {
 			console.log(JSON.stringify(n));
-			o.zixuns = n.result;
+			o.zixuns1 = n.result[0];
+			o.zixuns2 = n.result[1];
+			o.zixuns3 = n.result[2];
 			page++;
 		}, function() {
         })
@@ -77,25 +79,27 @@ avalon.ready(function() {
 	   },
 
        banners:[],
-       zixuns:[],
+       zixuns1:[],
+       zixuns2:[],
+       zixuns3:[],
        city:"上海",
        xiaoquName:"东湖e家园"
     });
 	
 	function changeTab(){
 		
-		var section = getUrlParam("section");
-    	if("0"==section){
-    		
-    	}else if("1"==section){
-    		o.tabs[0].active = false;
-    		o.tabs[1].active = true;
-    		o.tabs[2].active = false;
-    	}elseif("2"==section){
-    		o.tabs[0].active = false;
-    		o.tabs[1].active = false;
-    		o.tabs[2].active = true;
-    	}
+//		var section = getUrlParam("section");
+//    	if("0"==section){
+//    		
+//    	}else if("1"==section){
+//    		o.tabs[0].active = false;
+//    		o.tabs[1].active = true;
+//    		o.tabs[2].active = false;
+//    	}elseif("2"==section){
+//    		o.tabs[0].active = false;
+//    		o.tabs[1].active = false;
+//    		o.tabs[2].active = true;
+//    	}
 	}
 
 
