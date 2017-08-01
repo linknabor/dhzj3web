@@ -239,7 +239,10 @@
 <script type="text/javascript" src="../static/js/swiper.js"></script>
 <script type="text/javascript">
 function gotoProject(type){
-    location.href="../repair/chooseproject.html?repairType="+type;
+	if(type=="3"){
+		location.href="hotel.html";
+	}
+    
 }
 function initSwiper(){
     //头部展示图适应屏幕

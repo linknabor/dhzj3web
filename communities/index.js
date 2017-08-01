@@ -222,7 +222,9 @@ avalon.ready(function() {
 	
 	function getCategoryType(){
 		o.category=getUrlParam("category");
-		if("1"==o.category){
+		o.categoryCN="管家服务";
+		
+		/*if("1"==o.category){
 			o.categoryCN="户外活动";
 		}else if("2"==o.category){
 			o.categoryCN="宠物宝贝";
@@ -240,7 +242,7 @@ avalon.ready(function() {
 			o.categoryCN="都市丽人";
 		}else{
 			o.categoryCN="管家服务";
-		}
+		}*/
 	}
 	
 	function setCategory(){
