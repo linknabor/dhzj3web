@@ -1,5 +1,6 @@
 avalon.ready(function() {
 	function queryBanners(){
+
         common.invokeApi("GET","banner/10",null,null,function(n) {
             console.log(JSON.stringify(n));
             o.banners = n.result;
@@ -27,8 +28,9 @@ avalon.ready(function() {
 				var url = MasterConfig.C("payPageFolder")+MasterConfig.C("payPageSuffix");
                 url += "baojie_richang_pay.html?item="+o.item.id;
                 url += "&basePageUrl="+escape(MasterConfig.C("basePageUrl"));
-                //location.href="../../baojie_richang_pay.html?item="+o.item.id;
-				location.href=url;
+                location.href=url;
+				//location.href="../../baojie_richang_pay.html?item="+o.item.id;
+				
 			}
         }
     });

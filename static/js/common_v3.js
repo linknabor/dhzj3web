@@ -233,7 +233,7 @@ function checkBindAndBind(){
     var o = getData.code;
     if(b&&o) {
         common.alert("start api bind"),
-        common.invokeApi("POST", "bindWechat/"+MasterConfig.C("bindAppId")+"/" + o, null,
+        common.invokeApi("POST", "bindWechat/" + o, null,
             null,
         function(x) {
             common.alert("api binded")
