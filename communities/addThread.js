@@ -161,7 +161,7 @@ avalon.ready(function()	{
 	    common.invokeApi(n, a, i, null, e, r)
 	}
 
-	common.checkRegisterStatus();	//校验用户是否注册
+	//common.checkRegisterStatus();	//校验用户是否注册
 	getCategoryType();
 	avalon.scan(document.body);
     //share.default_send();
