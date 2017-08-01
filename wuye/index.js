@@ -88,18 +88,18 @@ avalon.ready(function() {
 	
 	function changeTab(){
 		
-//		var section = getUrlParam("section");
-//    	if("0"==section){
-//    		
-//    	}else if("1"==section){
-//    		o.tabs[0].active = false;
-//    		o.tabs[1].active = true;
-//    		o.tabs[2].active = false;
-//    	}elseif("2"==section){
-//    		o.tabs[0].active = false;
-//    		o.tabs[1].active = false;
-//    		o.tabs[2].active = true;
-//    	}
+		var section = getUrlParam("section");
+    	if("0"==section){
+   		
+    	}else if("1"==section){
+    		o.tabs[0].active = false;
+    		o.tabs[1].active = true;
+    		o.tabs[2].active = false;
+    	}else if("2"==section){
+    		o.tabs[0].active = false;
+    		o.tabs[1].active = false;
+    		o.tabs[2].active = true;
+    	}
 	}
 
 
