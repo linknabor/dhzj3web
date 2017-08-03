@@ -31,15 +31,15 @@ avalon.ready(function() {
         
         tabs: [
            {
-               name: '物业板块',
+               name: '物业公告',
                active: true
            },
            {
-               name: '业委会板块',
+               name: '业委会公告',
                active: false
            },
            {
-               name: '居委会板块',
+               name: '居委会公告',
                active: false
            }
         ],
