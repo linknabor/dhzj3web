@@ -24,7 +24,6 @@ avalon.ready(function()	{
 		threadTitle: "",
 		threadContent: "",
 		uploadPicId: "",
-		type: "0",
 		addThread:function(){
 			
 //        	if(o.threadTitle==""){
@@ -138,8 +137,6 @@ avalon.ready(function()	{
 	
 	function getCategoryType(){
 		o.threadCategory=getUrlParam("category");
-		o.type=getUrlParam("type");
-		if(o.type=="" || o.type==null) o.type="0";
 	}
 	
 	function saveThread() {
