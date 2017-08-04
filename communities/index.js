@@ -28,7 +28,7 @@ avalon.ready(function() {
 			console.log(JSON.stringify(n));
 			o.threads = n.result;
 			o.threads_count = n.result.length;
-			
+			o.userSectId = n.result[0].userSectId;
 			if(firstQuery) {
        	    	commonui.initPage();
        	    	firstQuery = false;
@@ -156,14 +156,20 @@ avalon.ready(function() {
 		imgUrls: [],
 		previewLink: [],
 		categoryCN: '',
+		userSectId: '',
 		
 		gotoDetail:function(threadId){
         	location.href="threadDetail.html?threadId="+threadId;
         },
         
         publicnew:function(){
-        	
-        	location.href="addThread.html?category="+o.category;
+        	if(o.userSectId ==0 || o.userSectId=='' || o.userSectId==null)
+        	{
+        		alert("用户没有绑定房屋。");
+        	}else
+        	{
+        		location.href="addThread.html?category="+o.category;
+        	}
         },
         
         viewSrcImg:function(threadId, index){
