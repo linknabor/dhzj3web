@@ -26,12 +26,9 @@ avalon.ready(function() {
 		},
         e = function(n) {
 			console.log(JSON.stringify(n));
-			o.threads = n.result;
-			o.threads_count = n.result.length;
-			if(o.threads_count>0)
-			{
-				o.userSectId = n.result[0].userSectId;
-			}
+			o.threads = n.result[0];
+			o.userSectId = n.result[1];
+			o.threads_count = n.result[0].length;
 			if(firstQuery) {
        	    	commonui.initPage();
        	    	firstQuery = false;
