@@ -28,7 +28,10 @@ avalon.ready(function() {
 			console.log(JSON.stringify(n));
 			o.threads = n.result;
 			o.threads_count = n.result.length;
-			o.userSectId = n.result[0].userSectId;
+			if(o.threads_count>0)
+			{
+				o.userSectId = n.result[0].userSectId;
+			}
 			if(firstQuery) {
        	    	commonui.initPage();
        	    	firstQuery = false;
@@ -156,7 +159,7 @@ avalon.ready(function() {
 		imgUrls: [],
 		previewLink: [],
 		categoryCN: '',
-		userSectId: '',
+		userSectId: 0,
 		
 		gotoDetail:function(threadId){
         	location.href="threadDetail.html?threadId="+threadId;
