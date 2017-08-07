@@ -320,13 +320,14 @@ avalon.ready(function() {
 			filter : filter	
     	},
         e = function(n) {
-    		if(n.result.length==0) {
+    		if(n.result[0].length==0) {
                 hasNext=false;
                 isloadPage = false;
             	commonui.showMessage("没有更多啦");
             	commonui.hideAjaxLoading();
     		} else {
-    			o.threads= o.threads.concat(n.result);
+    			o.threads= o.threads.concat(n.result[0]);
+    			o.userSectId = n.result[1];
                 isloadPage = false;
                 commonui.hideAjaxLoading();
     		}
