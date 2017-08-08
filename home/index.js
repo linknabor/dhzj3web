@@ -19,7 +19,22 @@ avalon.ready(function() {
         jingxuan2:{},
         jingxuan3:{},
         gotoPage:function(url){
+        	if(url =='')
+        	{
+        		alert("敬请期待！");return;
+        	}
         	location.href=url;
+        },
+        gotoProject:function(type){
+        	if(type=="2")
+        	{
+        		location.href="hotel.html";
+        	}else if(type=="3"){
+        		location.href="../wuye/bianmin.html";
+        	}else
+        	{
+        		alert("敬请期待！");
+        	}
         }
     });
 	query();
