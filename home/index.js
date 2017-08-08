@@ -21,7 +21,8 @@ avalon.ready(function() {
         gotoPage:function(url){
         	if(url =='')
         	{
-        		alert("敬请期待！");return;
+        		location.href="build.html";
+        		//alert("敬请期待！");return;
         	}
         	location.href=url;
         },
@@ -33,7 +34,8 @@ avalon.ready(function() {
         		location.href="../wuye/bianmin.html";
         	}else
         	{
-        		alert("敬请期待！");
+        		location.href="build.html";
+        		//alert("敬请期待！");
         	}
         }
     });
