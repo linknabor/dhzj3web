@@ -15,6 +15,7 @@ avalon.ready(function() {
 			console.log(JSON.stringify(n));
 			o.city=n.result.city;
 			o.xiaoquName=n.result.xiaoquName;
+			o.userSectId = n.result.sect_id;
 		},function(){
 		})
 	}
@@ -52,7 +53,16 @@ avalon.ready(function() {
             hasNext=true;
             isloadPage=false;
         },
-
+        
+        gotoThread: function()
+        {
+        	if(o.userSectId ==0 || o.userSectId=='' || o.userSectId==null)
+        	{
+        		alert("用户没有绑定房屋。");
+        		return;
+        	}
+        	location.href="../communities/addThread.html?category=2";
+        },
         
         
        jumpToDetail:function(mid) {
@@ -83,7 +93,8 @@ avalon.ready(function() {
        zixuns2:[],
        zixuns3:[],
        city:"上海",
-       xiaoquName:"东湖e家园"
+       xiaoquName:"东湖e家园",
+       userSectId:0,
     });
 	
 	function changeTab(){

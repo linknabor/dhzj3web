@@ -166,6 +166,7 @@ avalon.ready(function() {
         	if(o.userSectId ==0 || o.userSectId=='' || o.userSectId==null)
         	{
         		alert("用户没有绑定房屋。");
+        		return;
         	}else
         	{
         		location.href="addThread.html?category="+o.category;
