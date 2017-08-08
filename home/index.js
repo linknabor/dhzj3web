@@ -23,8 +23,10 @@ avalon.ready(function() {
         	{
         		location.href="build.html";
         		//alert("敬请期待！");return;
+        	}else
+        	{
+        		location.href=url;
         	}
-        	location.href=url;
         },
         gotoProject:function(type){
         	if(type=="2")
