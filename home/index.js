@@ -33,7 +33,7 @@ avalon.ready(function() {
         	{
         		location.href="hotel.html";
         	}else if(type=="3"){
-        		location.href="../wuye/bianmin.html";
+        		location.href="../wuye/message.html?messageId=33";
         	}else
         	{
         		location.href="build.html";
