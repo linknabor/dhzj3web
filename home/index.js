@@ -13,7 +13,10 @@ avalon.ready(function() {
 	
 	function queryMessage(){
 		common.invokeApi("GET","getmessages",null,null,function(n){
-			o.jingxuan3=n.result.smallImage;
+			if(n.result!=null)
+			{
+				o.jingxuan3=n.result.smallImage;
+			}
 			initSwiper();
 		},function(){
 			alert("页面获取信息错误，请稍后重试！");
