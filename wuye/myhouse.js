@@ -45,9 +45,10 @@ avalon.ready(function() {
         common.invokeApi(n, a, i, null, e, r)
 	}
 	function addHouse(){
-		var n = "GET",
+		
+		var n = "POST",
         a = "addhexiehouse/"+o.stmtId+"/"+o.choosedhouse.mng_cell_id,
-        i = null,
+        i = o.choosedhouse,
         e = function(n) {
 			o.choosedhouse={};
 			alert("添加房屋成功。");
