@@ -639,6 +639,9 @@ avalon.ready(function() {
             	commonui.hideAjaxLoading();
     		} else {
     			o.cellbills= o.cellbills.concat(n.result.bill_info);
+    			o.pay_least_month = n.result.pay_least_month;
+	            o.reduceMode = n.result.reduce_mode;
+	            buildRuleDisplay(o.ruleId, o.rule);
                 isloadPage = false;
                 commonui.hideAjaxLoading();
     		}
