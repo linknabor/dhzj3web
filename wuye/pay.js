@@ -2,6 +2,7 @@ avalon.ready(function() {
 	var page = 1;
 	var normalPage = 1;
 	var carnormalPage = 1;
+	var housenormalPage = 1;
 	var today = new Date();
 	var threemonthago = (new Date(today.getTime()-92*24*3600000)).format('yyyy-MM-dd');
 	var halfyearbefore = (new Date(today.getTime()-183*24*3600000)).format('yyyy-MM-dd');
@@ -62,7 +63,7 @@ avalon.ready(function() {
 	
     function queryBillList(){
 		var n = "GET",
-        a = "billList?startDate="+o.startDate+"&endDate="+o.endDate +"&payStatus=02&currentPage="+normalPage+"&totalCount="+o.totalCountNormal+"&house_id"+o.house_id,
+        a = "billList?startDate="+o.startDate+"&endDate="+o.endDate +"&payStatus=02&currentPage="+normalPage+"&totalCount="+o.totalCountNormal,
         i = null,
         e = function(n) {
 			console.log(JSON.stringify(n));
@@ -129,6 +130,7 @@ avalon.ready(function() {
         totalNotPay:0,
         totalCountNormal:0,
 		cartotalCountNormal:0,
+		housetotalCountNormal:0,
 		price:0.00,
 		carprice:0.00,
 		quickprice:0.00,
@@ -466,9 +468,10 @@ avalon.ready(function() {
             var pay_addr = billList[0].pay_cell_addr;
             var url = MasterConfig.C("basePageUrl")+"paymentdetail.html?billIds="+bills+
             	"&stmtId="+o.stmtId+"&payAddr="+escape(pay_addr)+"&totalPrice="+total_pay+"&reduceMode="+o.reduceMode;
-			//var url = MasterConfig.C("payPageFolder")+MasterConfig.C("payPageSuffix");
-            //url += "paymentdetail.html?billIds="+bills+"&stmtId="+o.stmtId+"&payAddr="+escape(pay_addr)+"&totalPrice="+total_pay+"&reduceMode="+o.reduceMode;
-            //url += "&basePageUrl="+MasterConfig.C("basePageUrl");
+            
+            //var url = "../paymentdetail.html?billIds="+bills+
+        	//"&stmtId="+o.stmtId+"&payAddr="+escape(pay_addr)+"&totalPrice="+total_pay+"&reduceMode="+o.reduceMode;
+            
             window.location.href = url;
         }
     });
@@ -554,14 +557,18 @@ avalon.ready(function() {
             if(is_active){
             	loadNextPage();
             }else {
-            	var is_flag = o.tabs[1].active;
+            	var is_flag = o.tabs[2].active;
+				var is_check_flag = o.tabs[1].active;
             	if(is_flag)
             	{
             		loadNextPageNormal();
-            	}else
+            	}else if(is_check_flag && o.house_id !="")
             	{
-            		loadNextPageNormalCar();
-            	}
+            		loadNextPageNormalHouse();
+            	}else
+				{
+					loadNextPageNormalCar();
+				}
 			}
         }
     })
@@ -595,7 +602,7 @@ avalon.ready(function() {
     function loadNextPageNormal(){
     	
     	var n = "GET",
-        a = "billList?startDate="+o.startDate+"&endDate="+o.endDate +"&payStatus=02&currentPage="+normalPage+"&totalCount="+o.totalCountNormal+"&house_id="+o.house_id,
+        a = "billList?startDate="+o.startDate+"&endDate="+o.endDate +"&payStatus=02&currentPage="+normalPage+"&totalCount="+o.totalCountNormal,
         i = null,
         e = function(n) {
     		if(n.result==null) {
@@ -604,17 +611,38 @@ avalon.ready(function() {
             	commonui.showMessage("没有更多啦");
             	commonui.hideAjaxLoading();
     		} else {
-    			if(o.house_id=="" && o.house_id ==null)
-    			{
-    				o.bills= o.bills.concat(n.result.bill_info);
-    			}else
-    			{
-    				o.cellbills= o.cellbills.concat(n.result.bill_info);
-    			}
+    			o.bills= o.bills.concat(n.result.bill_info);
                 isloadPage = false;
                 commonui.hideAjaxLoading();
     		}
     		normalPage++;
+        },
+        r = function() {
+        	isloadPage = false;
+        	commonui.showMessage("加载账单信息失败");
+        	commonui.hideAjaxLoading();
+        };
+        common.invokeApi(n, a, i, null, e, r)
+    }
+
+	function loadNextPageNormalHouse(){
+    	
+    	var n = "GET",
+        a = "billList?startDate="+o.startDate+"&endDate="+o.endDate +"&payStatus=02&currentPage="+housenormalPage+"&totalCount="+o.housetotalCountNormal+"&house_id="+o.house_id,
+        i = null,
+        e = function(n) {
+    		if(n.result==null) {
+				o.housetotalCountNormal = n.result.bills_size;
+                hasNext=false;
+                isloadPage = false;
+            	commonui.showMessage("没有更多啦");
+            	commonui.hideAjaxLoading();
+    		} else {
+    			o.cellbills= o.cellbills.concat(n.result.bill_info);
+                isloadPage = false;
+                commonui.hideAjaxLoading();
+    		}
+    		housenormalPage++;
         },
         r = function() {
         	isloadPage = false;
@@ -691,7 +719,7 @@ avalon.ready(function() {
     })
     o.$watch("houseSelected", function (id) {
     	o.house_id = id;
-    	loadNextPageNormal();
+    	loadNextPageNormalHouse();
     })
     
     function getCellMng(sect_id,build_id,unit_id,data_type)
@@ -703,6 +731,7 @@ avalon.ready(function() {
 			if("03"==data_type)
 			{
 				o.build = n.result.build_info;
+				//o.buildSelected = o.build[0];
 			}else if("02"==data_type)
 			{
 				o.unit = n.result.unit_info;
