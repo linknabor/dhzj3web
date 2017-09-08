@@ -172,14 +172,13 @@ avalon.ready(function() {
             o.tabs[idx].active = true;
             hasNext=true;
             isloadPage=false;
-			if(o.tabs[2].active){
-				alert("内容正在丰富中,敬请期待。");
-				o.tabs[2].active = false;
-				o.tabs[1].active = true;
-			}
-			if(o.tabs[2].active && o.cartotalCountNormal==0){
-				o.hint = "缴纳停车费需要先绑定房屋哦。  请在  “社区物业-->我是业主” 中进行绑定。"
-			}
+            if(o.tabs[1].active)
+            {
+            	getSect();
+            }
+			//if(o.tabs[2].active && o.cartotalCountNormal==0){
+			//	o.hint = "缴纳停车费需要先绑定房屋哦。  请在  “社区物业-->我是业主” 中进行绑定。"
+			//}
         },
         /**账单**/
         dropdowns: [
@@ -640,9 +639,6 @@ avalon.ready(function() {
             	commonui.hideAjaxLoading();
     		} else {
     			o.cellbills= o.cellbills.concat(n.result.bill_info);
-    			o.pay_least_month = n.result.pay_least_month;
-	            o.reduceMode = n.result.reduce_mode;
-	            buildRuleDisplay(o.ruleId, o.rule);
                 isloadPage = false;
                 commonui.hideAjaxLoading();
     		}
