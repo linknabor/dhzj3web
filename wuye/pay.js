@@ -639,7 +639,7 @@ avalon.ready(function() {
             	commonui.hideAjaxLoading();
     		} else {
     			o.cellbills= o.cellbills.concat(n.result.bill_info);
-    			o.pay_least_month = n.result.pay_least_month;
+				o.pay_least_month = n.result.pay_least_month;
 	            o.reduceMode = n.result.reduce_mode;
 	            buildRuleDisplay(o.ruleId, o.rule);
                 isloadPage = false;
@@ -734,7 +734,6 @@ avalon.ready(function() {
 			if("03"==data_type)
 			{
 				o.build = n.result.build_info;
-				//o.buildSelected = o.build[0];
 			}else if("02"==data_type)
 			{
 				o.unit = n.result.unit_info;
@@ -747,9 +746,12 @@ avalon.ready(function() {
         	if("03"==data_type)
 			{
 				o.build = [];
+				o.unit = [];
+				o.house = [];
 			}else if("02"==data_type)
 			{
 				o.unit = [];
+				o.house = [];
 			}else if("01"==data_type)
 			{
 				o.house = [];
@@ -757,10 +759,9 @@ avalon.ready(function() {
         };
         common.invokeApi(n, a, i, null, e, r)
 	}
-    
     change2parkTab();
 	initWechat(['scanQRCode']);
-	checkUserRegister();
+	//checkUserRegister();
     queryBillList();
 	avalon.scan(document.body);
     //share.default_send();
