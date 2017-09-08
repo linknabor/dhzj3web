@@ -81,7 +81,9 @@ avalon.ready(function() {
 
 			var payUrl = MasterConfig.C("basePageUrl")+"wuye/pay.html";
 			if(isPark=="1"){
-				payUrl += "?park=1"
+				//payUrl += "?park=1";
+				alert("内容正在丰富中,敬请期待。");
+				return false;
 			}
 			var encodedUrl = encodeURI(payUrl);
 			var authUrl = MasterConfig.C("oauthUrl")+"appid="+MasterConfig.C("appId")+"&redirect_uri="+encodedUrl+MasterConfig.C("oauthUrlPostFix");

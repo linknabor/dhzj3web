@@ -151,6 +151,11 @@ avalon.ready(function() {
             o.tabs[idx].active = true;
             hasNext=true;
             isloadPage=false;
+			if(o.tabs[2].active){
+				alert("内容正在丰富中,敬请期待。");
+				o.tabs[2].active = false;
+				o.tabs[1].active = true;
+			}
 			if(o.tabs[2].active && o.cartotalCountNormal==0){
 				o.hint = "缴纳停车费需要先绑定房屋哦。  请在  “社区物业-->我是业主” 中进行绑定。"
 			}
