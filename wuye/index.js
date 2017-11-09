@@ -72,6 +72,12 @@ avalon.ready(function() {
     		   window.location.href="https://mp.weixin.qq.com/s/WTgWmG5lknKExBmOsughmQ";
     	   }else if(mid==31){
     		   window.location.href="https://mp.weixin.qq.com/s/-6gMOUi3vWJMRraOqtC2wQ";
+		   }else if(mid==76){
+			   window.location.href="http://mp.weixin.qq.com/s/LoJjEaaQ0xhi2wD7uuJVJQ";	
+		   }else if(mid==78){
+			   window.location.href="http://mp.weixin.qq.com/s/28gpc3gW7byK6k3kQHqX8A";
+		   }else if(mid==79){
+			   window.location.href="http://mp.weixin.qq.com/s/Em3EJ6lo4V8eITXpPcA3LQ";
        	   }else{
     		   window.location.href="message.html?messageId="+mid;
     	   }
