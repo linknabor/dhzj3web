@@ -175,10 +175,18 @@
 	        </div>
 	    </div>
 	    <div ms-visible="tabs[1].active">
-	    	<div class="divstyle1"><span class="spanstyle">小区：</span><select style="width: 50%;" ms-duplex="sectSelected"><option ms-repeat-sect="sect" ms-attr-value="sect.id">{{sect.name}}</option></select></div>
-			<div class="divstyle1"><span class="spanstyle">楼宇：</span><select style="width: 50%;" ms-duplex="buildSelected"><option ms-repeat-build="build" ms-attr-value="build.id">{{build.name}}</option></select></div>
-			<div class="divstyle1"><span class="spanstyle">门牌：</span><select style="width: 50%;" ms-duplex="unitSelected"><option ms-repeat-unit="unit" ms-attr-value="unit.id">{{unit.name}}</option></select></div>
-			<div class="divstyle1"><span class="spanstyle">室号：</span><select style="width: 50%;" ms-duplex="houseSelected"><option ms-repeat-house="house" ms-attr-value="house.id">{{house.name}}</option></select></div>
+	    	<div class="divstyle1"><span class="spanstyle">小区：</span><select id="sectType" style="width: 50%;" ms-duplex="sectSelected">
+	    	<option ms-attr-value="0" >请选择</option>
+	    	<option ms-repeat-sect="sect" ms-attr-value="sect.id">{{sect.name}}</option></select></div>
+			<div class="divstyle1"><span class="spanstyle">楼宇：</span><select id="buildType" style="width: 50%;" ms-duplex="buildSelected">
+			<option ms-attr-value="0" >请选择</option>
+			<option ms-repeat-build="build" ms-attr-value="build.id">{{build.name}}</option></select></div>
+			<div class="divstyle1"><span class="spanstyle">门牌：</span><select id="unitType" style="width: 50%;" ms-duplex="unitSelected">
+			<option ms-attr-value="0" >请选择</option>
+			<option ms-repeat-unit="unit" ms-attr-value="unit.id">{{unit.name}}</option></select></div>
+			<div class="divstyle1"><span class="spanstyle">室号：</span><select id="houseType" style="width: 50%;" ms-duplex="houseSelected">
+			<option ms-attr-value="0" >请选择</option>
+			<option ms-repeat-house="house" ms-attr-value="house.id">{{house.name}}</option></select></div>
 	        
 	        <div class="select-item" ms-repeat-item="cellbills" ms-class-selected="item.selected" ms-class-payed="item.pay_status!='02'" ms-click="cellselect($index)">
 	            <div class="ov fs15" style="padding:18px 15px;color:#3b3937">
