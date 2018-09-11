@@ -550,7 +550,8 @@ avalon.ready(function() {
 		var tmp = page;
 		if (is_cell_active) {
 			tmp = housenormalPage
-		} else if(is_active) {
+//		} else if(is_active) {
+		} else {
 			tmp = normalPage;
 		}
 		

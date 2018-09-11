@@ -165,7 +165,7 @@ avalon.ready(function() {
         publicnew:function(){
         	if(o.userSectId ==0 || o.userSectId=='' || o.userSectId==null)
         	{
-        		alert("用户没有绑定房屋。");
+        		alert("您暂未绑定房屋，请前往“我是业主”\r\n进行操作，感谢！");
         		return;
         	}else
         	{
