@@ -53,9 +53,9 @@ avalon.ready(function() {
 			ruleArr = rule.split("-");
 		}
 		
-		if("1"==rule_id){
+		if ("1"==rule_id) {
 			o.ruleDisplay = "物业优惠：停车费每满"+ruleArr[0]+"月，减免"+ruleArr[1]+"月";
-		}else if("2"==rule_id){
+		} else if("2"==rule_id) {
 			o.ruleDisplay = "缴停车费满"+ruleArr[0]+"月，每月账单减免"+ruleArr[1]+"元";
 		}
 		
@@ -81,6 +81,11 @@ avalon.ready(function() {
 				o.pay_least_month = n.result.pay_least_month;
 				o.totalNotPay = n.result.total_not_pay;
 				o.reduceMode = n.result.reduce_mode;
+				
+				o.old_bill_id = n.result.old_bill_id;
+				o.old_bill_price = n.result.old_bill_price;
+				o.old_bill_date = n.result.old_bill_date;
+				o.old_cell_addr = n.result.old_cell_addr;
 				//if(o.tabs[2].active && o.cartotalCountNormal==0){
 				//	o.hint = "缴纳停车费需要先绑定房屋哦。  请在  “社区物业-->我是业主” 中进行绑定。"
 				//}
@@ -143,6 +148,10 @@ avalon.ready(function() {
         permit_skip_pay:1,
         permit_skip_car_pay:1,
         pay_least_month:0,
+        old_bill_id: '',
+        old_bill_price: 0.00,
+		old_bill_date: '',
+		old_cell_addr: '',
         currentPage:'wuye',
         sect_id:'',
         build_id:'',
@@ -152,6 +161,7 @@ avalon.ready(function() {
         build: [],
         unit: [],
         house: [],
+        oldbillSelected:"",
         sectSelected:"",
         buildSelected:"",
         unitSelected:"",
@@ -164,6 +174,7 @@ avalon.ready(function() {
         selectedAll: false,
         cellselectedAll: false,
         cellbills:[],
+        oldhouseId:'',
         changeTab: function(idx) {
         	
             for (var i = 0, len = o.tabs.length; i < len; i++) {
@@ -172,8 +183,7 @@ avalon.ready(function() {
             o.tabs[idx].active = true;
             hasNext=true;
             isloadPage=false;
-            if(o.tabs[1].active)
-            {
+            if (o.tabs[1].active) {
             	getSect();
             }
 			//if(o.tabs[2].active && o.cartotalCountNormal==0){
@@ -205,7 +215,7 @@ avalon.ready(function() {
         selectDropdown: function(idx) {
             o.selectedDropdown = o.dropdowns[idx];
             //根据选择的筛选条件刷新列表数据
-            if(o.startDate!=o.dropdowns[idx].startDate){
+            if (o.startDate!=o.dropdowns[idx].startDate) {
             	o.startDate=o.dropdowns[idx].startDate;
             	queryBillList();
             }
@@ -241,7 +251,7 @@ avalon.ready(function() {
         /*绑定房屋支付--选择账单 */
         select: function(idx) {
         	
-        	if(o.bills[idx].pay_status!="02"){
+        	if (o.bills[idx].pay_status!="02") {
         		return;
         	}
         	var price = 0;
@@ -269,7 +279,7 @@ avalon.ready(function() {
         /*绑定房屋支付--选择账单 */
         cellselect: function(idx) {
         	
-        	if(o.cellbills[idx].pay_status!="02"){
+        	if (o.cellbills[idx].pay_status!="02") {
         		return;
         	}
         	var price = 0;
@@ -288,11 +298,11 @@ avalon.ready(function() {
                 
                 for (var i = 0, len = o.cellbills.length; i < len; i++) {
                 	cellselectedAll &= o.cellbills[i].selected;
-                    price+=o.cellbills[i].selected?parseFloat(o.cellbills[i].fee_price):0;
+                    price+= o.cellbills[i].selected?parseFloat(o.cellbills[i].fee_price):0;
                 }
                 o.cellselectedAll = cellselectedAll;
         	}
-        	o.celltotalPrice=price.toFixed(2);
+        	o.celltotalPrice = price.toFixed(2);
         },
         /*绑定房屋支付--全选  start */
         toggleSelectedAll: function() {
@@ -301,12 +311,12 @@ avalon.ready(function() {
                 o.bills[i].selected = o.selectedAll;
             }
             
-            if(!o.selectedAll){
+            if (!o.selectedAll) {
         		o.totalPrice = 0.00;
-            }else{
+            } else {
             	var total = 0.00;
-            	for(var i=0;i<o.bills.length;i++){
-            		if(o.bills[i].selected == true && o.bills[i].pay_status=="02"){
+            	for (var i=0;i<o.bills.length;i++) {
+            		if (o.bills[i].selected == true && o.bills[i].pay_status=="02") {
             			total+=parseFloat(o.bills[i].fee_price);
             		}
             	}
@@ -320,12 +330,12 @@ avalon.ready(function() {
                 o.cellbills[i].selected = o.cellselectedAll;
             }
             
-            if(!o.cellselectedAll){
+            if (!o.cellselectedAll) {
         		o.celltotalPrice = 0.00;
-            }else{
+            } else {
             	var total = 0.00;
-            	for(var i=0;i<o.cellbills.length;i++){
-            		if(o.cellbills[i].selected == true && o.cellbills[i].pay_status=="02"){
+            	for (var i=0;i<o.cellbills.length;i++) {
+            		if (o.cellbills[i].selected == true && o.cellbills[i].pay_status=="02") {
             			total+=parseFloat(o.cellbills[i].fee_price);
             		}
             	}
@@ -335,7 +345,7 @@ avalon.ready(function() {
         /*停车费支付--选择账单*/
         carselect: function(idx) {
         	
-        	if(o.carbills[idx].pay_status!="02"){
+        	if (o.carbills[idx].pay_status!="02") {
         		return;
         	}
         	var price = 0;
@@ -367,12 +377,12 @@ avalon.ready(function() {
                 o.carbills[i].selected = o.carselectedAll;
             }
             
-            if(!o.carselectedAll){
+            if (!o.carselectedAll) {
         		o.cartotalPrice = 0.00;
-            }else{
+            } else {
             	var total = 0.00;
-            	for(var i=0;i<o.carbills.length;i++){
-            		if(o.carbills[i].selected == true && o.carbills[i].pay_status=="02"){
+            	for (var i=0;i<o.carbills.length;i++) {
+            		if (o.carbills[i].selected == true && o.carbills[i].pay_status=="02") {
             			total+=parseFloat(o.carbills[i].fee_price);
             		}
             	}
@@ -382,16 +392,14 @@ avalon.ready(function() {
         /*快捷支付--选择账单*/
         quickselect: function(idx,service_fee_name) {
         	
-        	if(o.quickbills[idx].pay_status!="02"){
+        	if (o.quickbills[idx].pay_status!="02") {
         		return;
         	}
-        	if(service_fee_name=='公共车位停车费' || service_fee_name=='固定车位停车费')
-        	{
+        	if (service_fee_name=='公共车位停车费' || service_fee_name=='固定车位停车费') {
         		o.permit_skip_car_pay=1;
         		if(o.permit_skip_car_pay==1) {/*不可跳 必须连续*/
         			checkPark(idx);
-        		}else
-        		{
+        		} else {
         			elseCheckPark(idx);
         		}
         	} else { 
@@ -415,8 +423,8 @@ avalon.ready(function() {
         		o.quicktotalPrice = 0.00;
             }else{
             	var total = 0.00;
-            	for(var i=0;i<o.quickbills.length;i++){
-            		if(o.quickbills[i].selected == true  && o.quickbills[i].pay_status=="02"){
+            	for (var i=0;i<o.quickbills.length;i++) {
+            		if (o.quickbills[i].selected == true  && o.quickbills[i].pay_status=="02") {
             			total+=parseFloat(o.quickbills[i].fee_price);
             		}
             	}
@@ -433,17 +441,17 @@ avalon.ready(function() {
         	var sel_not_pay_count = 0; //已选账单中未付账单的数量
         	var sel_bill_arr = new Array();
             for (var i = 0, len = billList.length; i < len; i++) {
-            	if(billList[i].is_onlinepay=='false'){
+            	if (billList[i].is_onlinepay=='false') {
             		alert("您所在小区仅能查询物业账单，缴费请到小区物业管理处办理。");
             		return false;
             	}
-                if(billList[i].selected&&billList[i].pay_status=="02"){
+                if (billList[i].selected && billList[i].pay_status=="02") {
                 	bills+=billList[i].bill_id+",";
         			total+=parseFloat(billList[i].fee_price);
                 	total_pay = total.toFixed(2);
                 	
                 	var ret = jQuery.inArray(billList[i].service_fee_cycle, sel_bill_arr);
-                	if(-1==ret){
+                	if (-1==ret) {
                 		sel_bill_arr.push(billList[i].service_fee_cycle);
                 		sel_not_pay_count++;
                 	}
@@ -487,20 +495,15 @@ avalon.ready(function() {
     {
     	for (var i = 0; i <= idx; i++) {
 			if (o.quickbills[i].pay_status=="02") {
-				if(o.quickbills[i].service_fee_name!='公共车位停车费' && o.quickbills[i].service_fee_name!='固定车位停车费')
-				{
-					if(!o.quickbills[idx].selected)	//选中
-					{
-						if(!o.quickbills[i].selected)
-						{
+				if (o.quickbills[i].service_fee_name!='公共车位停车费' && o.quickbills[i].service_fee_name!='固定车位停车费') {
+					if(!o.quickbills[idx].selected) {	//选中
+						if (!o.quickbills[i].selected) {
 							o.quicktotalPrice = parseFloat(o.quicktotalPrice) + parseFloat(o.quickbills[i].fee_price);
 							o.quicktotalPrice = parseFloat(o.quicktotalPrice).toFixed(2);
 							o.quickbills[i].selected=true;
 						}
-					}else	//反选
-					{
-						if(i==idx)
-						{
+					} else {	//反选
+						if(i==idx) {
 							o.quicktotalPrice-=parseFloat(o.quickbills[idx].fee_price);
 							o.quicktotalPrice = parseFloat(o.quicktotalPrice).toFixed(2);
 							o.quickbills[idx].selected=false;
@@ -511,10 +514,8 @@ avalon.ready(function() {
         }
     	for (var i = idx+1; i < o.quickbills.length; i++) {
 			if (o.quickbills[i].pay_status=="02") {
-				if(o.quickbills[i].service_fee_name!='公共车位停车费' && o.quickbills[i].service_fee_name!='固定车位停车费')
-				{
-					if(o.quickbills[i].selected)
-					{
+				if (o.quickbills[i].service_fee_name!='公共车位停车费' && o.quickbills[i].service_fee_name!='固定车位停车费') {
+					if (o.quickbills[i].selected) {
 						o.quicktotalPrice-=parseFloat(o.quickbills[i].fee_price);
 						o.quicktotalPrice = parseFloat(o.quicktotalPrice).toFixed(2);
 					}
@@ -545,11 +546,15 @@ avalon.ready(function() {
         var hook=loadheight-st;
 
 		var is_active = o.tabs[0].active;
+		var is_cell_active = o.tabs[1].active;
 		var tmp = page;
-		if(!is_active){
+		if (is_cell_active) {
+			tmp = housenormalPage
+//		} else if(is_active) {
+		} else {
 			tmp = normalPage;
 		}
-
+		
 		if(hook<800&&hasNext&&!isloadPage&&tmp>1){
             isloadPage=true;
             commonui.showAjaxLoading();
@@ -559,14 +564,12 @@ avalon.ready(function() {
             }else {
             	var is_flag = o.tabs[2].active;
 				var is_check_flag = o.tabs[1].active;
-            	if(is_flag)
-            	{
+            	if (is_flag) {
             		loadNextPageNormal();
-            	}else if(is_check_flag && o.house_id !="")
-            	{
+            	} else if(is_check_flag && o.house_id !="") {
             		loadNextPageNormalHouse();
-            	}else
-				{
+            		o.oldhouseId = o.house_id;
+            	} else {
 					loadNextPageNormalCar();
 				}
 			}
@@ -579,7 +582,7 @@ avalon.ready(function() {
         a = "quickPayBillList/"+o.stmtId+"/"+page+"/"+o.totalCount,
         i = null,
         e = function(n) {
-    		if(n.result.bills_size==0) {
+    		if(n.result == null || n.result.bills_size==0) {
                 hasNext=false;
                 isloadPage = false;
             	commonui.showMessage("没有更多啦");
@@ -631,15 +634,19 @@ avalon.ready(function() {
         a = "billList?startDate="+o.startDate+"&endDate="+o.endDate +"&payStatus=02&currentPage="+housenormalPage+"&totalCount="+o.housetotalCountNormal+"&house_id="+o.house_id,
         i = null,
         e = function(n) {
-    		if(n.result==null) {
-				o.housetotalCountNormal = n.result.bills_size;
+    		if(n.result == null || n.result.bills_size==0) {
                 hasNext=false;
                 isloadPage = false;
             	commonui.showMessage("没有更多啦");
             	commonui.hideAjaxLoading();
     		} else {
-    			o.cellbills= o.cellbills.concat(n.result.bill_info);
-    			o.pay_least_month = n.result.pay_least_month;
+    			if (o.oldhouseId == o.house_id) {
+    				o.cellbills= o.cellbills.concat(n.result.bill_info);
+    			} else {
+    				o.cellbills= n.result.bill_info;
+    			}
+    			o.housetotalCountNormal = n.result.bills_size;
+				o.pay_least_month = n.result.pay_least_month;
 	            o.reduceMode = n.result.reduce_mode;
 	            buildRuleDisplay(o.ruleId, o.rule);
                 isloadPage = false;
@@ -683,11 +690,9 @@ avalon.ready(function() {
     
     function change2parkTab(){
     	o.park = getUrlParam("park");
-    	if(o.park==null)
-    	{
+    	if(o.park==null) {
     		o.currentPage = "wuye";
-    	}else
-    	{
+    	} else {
     		o.currentPage = "park";
     	}
     }
@@ -708,56 +713,72 @@ avalon.ready(function() {
     
     o.$watch("sectSelected", function (id) {
 		o.sect_id = id;
-		getCellMng(o.sect_id,o.build_id,o.unit_id,'03');
-		getCellMng(o.sect_id,o.build_id,o.unit_id,'02');
-		getCellMng(o.sect_id,o.build_id,o.unit_id,'01');
+		getCellMng(o.sect_id, "", "", '03');
+		getCellMng(o.sect_id, "0", "", '02');
+		getCellMng(o.sect_id, "0", "0", '01');
     })
     o.$watch("buildSelected", function (id) {
     	o.build_id = id;
-    	getCellMng(o.sect_id,o.build_id,o.unit_id,'02');
+    	getCellMng(o.sect_id, o.build_id, "", '02');
+    	getCellMng(o.sect_id, o.build_id, "0", '01');
     })
     o.$watch("unitSelected", function (id) {
     	o.unit_id = id;
-    	getCellMng(o.sect_id,o.build_id,o.unit_id,'01');
+    	if (o.build_id=='') {
+    		o.build_id = '0';
+		}
+    	getCellMng(o.sect_id, o.build_id, o.unit_id, '01');
     })
     o.$watch("houseSelected", function (id) {
+    	o.oldhouseId = o.house_id;
     	o.house_id = id;
+    	commonui.showAjaxLoading();
+    	if (o.oldhouseId != o.house_id) {
+    		o.cellbills= [];
+    		housenormalPage = 1;
+    		hasNext=true;
+    	}
     	loadNextPageNormalHouse();
     })
     
     function getCellMng(sect_id,build_id,unit_id,data_type)
 	{
+    	commonui.showAjaxLoading();
+    	
 		var n = "GET",
         a = "getcellbyid?sect_id="+sect_id+"&build_id="+build_id+"&unit_id="+unit_id+"&data_type="+data_type,
         i = null,
         e = function(n) {
-			if("03"==data_type)
-			{
+			o.cellbills= [];
+			if ("03"==data_type) {
 				o.build = n.result.build_info;
-				//o.buildSelected = o.build[0];
-			}else if("02"==data_type)
-			{
+				o.unit = [];
+				o.house = [];
+			} else if("02"==data_type) {
 				o.unit = n.result.unit_info;
-			}else if("01"==data_type)
-			{
+				o.house = [];
+			} else if("01"==data_type) {
 				o.house = n.result.house_info;
 			}
+			isloadPage = false;
+            commonui.hideAjaxLoading();
         },
         r = function() {
-        	if("03"==data_type)
-			{
+        	if ("03"==data_type) {
 				o.build = [];
-			}else if("02"==data_type)
-			{
 				o.unit = [];
-			}else if("01"==data_type)
-			{
+				o.house = [];
+			} else if("02"==data_type) {
+				o.unit = [];
+				o.house = [];
+			} else if("01"==data_type) {
 				o.house = [];
 			}
+        	isloadPage = false;
+        	commonui.hideAjaxLoading();
         };
         common.invokeApi(n, a, i, null, e, r)
 	}
-    
     change2parkTab();
 	initWechat(['scanQRCode']);
 	checkUserRegister();

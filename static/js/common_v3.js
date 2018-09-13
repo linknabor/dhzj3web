@@ -16,7 +16,7 @@ var MasterConfig = function() {
         baidu_map_key:"RUWUgrEEF5VjoaWsstMMZwOD",
         shop_name: "东湖e家园",
         
-        is_debug:true,
+        is_debug:false,
        
     },
     
@@ -432,6 +432,7 @@ var commonui = {
 			}
 		}
 }
+
 
 checkBindAndBind();
 checkCodeAndLogin();

@@ -174,6 +174,7 @@ avalon.ready(function()	{
 	
 	function getThreadId(){
 		o.threadId=getUrlParam("threadId");
+		getThread();
 	}
 	
 	function getThread() {
@@ -263,9 +264,9 @@ avalon.ready(function()	{
 	    
 	    
 	}
+
 	
 	getThreadId();
-	getThread();
 	avalon.scan(document.body);
     //share.default_send();
     FastClick.attach(document.body);
