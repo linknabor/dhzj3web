@@ -8,7 +8,7 @@ var MasterConfig = function() {
         oauthUrl: "https://open.weixin.qq.com/connect/oauth2/authorize?",
         oauthUrlPostFix:"&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect",
 		oauthUrlPostSilent:"&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
-        bindAppId: "wx89c743b2fa762a2c",
+        bindAppId: "wxbd214f5765f346c1",
         
 		payPageFolder:"https://www.e-shequ.com/pay/",
         payPageSuffix:"zj3",		//hexie
