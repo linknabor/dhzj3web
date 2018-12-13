@@ -822,7 +822,7 @@ img{
 	text-align: center;
 	height: 60px;
 	line-height: 60px;
-	background-color: black;
+	background-color: #ccc;
 	-moz-opacity: .8;
 	opacity: .80;
 	filter: alpha(opacity=80);
@@ -845,7 +845,7 @@ img{
 	line-height: 60px;
 	margin-left: -30px;
 	text-align: center;
-	background-color: black;
+	background-color: #ccc;
 	-moz-opacity: .8;
 	opacity: .80;
 	filter: alpha(opacity=80);
