@@ -1,4 +1,4 @@
-baseurl={
+window.baseurl={
     URL:"https://test.e-shequ.com/dhzj3/wechat/hexie/wechat/",//请求地址
     wuye:"https://test.e-shequ.com/dhzj3/weixin/wuye/index.html",
     home:"https://test.e-shequ.com/dhzj3/weixin/home/index.html",
