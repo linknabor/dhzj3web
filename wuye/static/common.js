@@ -3,7 +3,7 @@
 
 var MasterConfig = function() {
     var t = {
-        baseUrl: "https://test.e-shequ.com/dhzj3/wechat/hexie/wechat/",
+        baseUrl: "https://test.e-shequ.com/dhzj3/wechat/hexie/wechat",
         basePageUrl:"https://test.e-shequ.com/dhzj3/weixin/",
         payPageFolder:"https://test.e-shequ.com/pay/",
         appId: "wx95f46f41ca5e570e",
@@ -424,4 +424,4 @@ checkBindAndBind();
 checkCodeAndLogin();
 common.setTitle(MasterConfig.C("shop_name") + "社区");
 
-// export default common
+export default common

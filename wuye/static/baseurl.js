@@ -6,4 +6,4 @@ baseurl={
     payment:"https://test.e-shequ.com/dhzj3/weixin/dhzj3paymentdetail.html?#/?"//物业支付成功跳转
 }
 
-// export default baseurl
+export default baseurl
