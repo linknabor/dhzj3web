@@ -1,4 +1,4 @@
-import wx from 'weixin-js-sdk';
+// import wx from 'weixin-js-sdk';
 
 var MasterConfig = function() {
     var t = {
@@ -404,4 +404,4 @@ window.common = {
 checkCodeAndLogin();
 common.setTitle(MasterConfig.C("shop_name") + "社区");
 
-export default common
+// export default common

@@ -28,4 +28,4 @@ window.baseurl = {
     // wuye
     payment:url+namepay+'/dhzj3paymentdetail.html?#/?',//跳转物业支付
 }
-export default baseurl
+// export default baseurl
