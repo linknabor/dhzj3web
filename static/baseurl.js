@@ -6,7 +6,7 @@ var namepay='/pay';
 
 window.baseurl = {
     URL:url+name+'/wechat/hexie/wechat/',
-    wuye:url+name+'/weixin/wuye/index.html?c1234',
+    wuye:url+name+'/weixin/wuye/index.html?v=20160229',
     home:url+name+'/weixin/home/index.html?v=20160229',
     person:url+name+'/weixin/person/index.html?v=20160229',
     //home
@@ -28,3 +28,4 @@ window.baseurl = {
     // wuye
     payment:url+namepay+'/dhzj3paymentdetail.html?#/?',//跳转物业支付
 }
+export default baseurl
