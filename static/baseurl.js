@@ -13,7 +13,7 @@ window.baseurl = {
     message:url+name+'/weixin/wuye/index.html#/message"',
     //person
     conpons:url+name+'/weixin/group/onsalesindex.html',
-    baoxiu:url+name+'/weixin/wuye/index.html?state=123#/publish?category=2',//报修
+    baoxiu:url+name+'/weixin/wuye/index.html?state=123#/butler?category=2',//报修
     fuwux:url+name+'/weixin/wuye/index.html?state=123#/butler?category=0',//服务需求 
     butler:url+name+'/weixin/wuye/index.html?state=123#/butler?category=1',//建议
     gotoGroupDetail:url+name+'/weixin/group/rgroupinvite.html?',//团购详情
