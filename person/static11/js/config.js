@@ -6,7 +6,7 @@ var common =/127|test/.test(location.origin)?'https://test.e-shequ.com/weixin/':
 			'https://www.e-shequ.com/shijiazhuang/weixin/';
 window.config = {
 	//请求头公共部分
-	baseUrl:/127|test/.test(location.origin)?'https://test.e-shequ.com/wechat/hexie/wechat/':
+	baseUrl:/127|test/.test(location.origin)?'https://test.e-shequ.com/donghu/wechat/hexie/wechat/':
   			/uat/.test(location.origin)?'https://uat.e-shequ.com/xsq/wechat/hexie/wechat/':
   			'https://www.e-shequ.com/shijiazhuang/wechat/hexie/wechat/',
 	//个人中心mon

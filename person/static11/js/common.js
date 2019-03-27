@@ -4,7 +4,7 @@ var MasterConfig = function() {
     
     var t = {
 
-        baseUrl: /127|test/.test(location.origin)?'https://test.e-shequ.com/wechat/hexie/wechat/':
+        baseUrl: /127|test/.test(location.origin)?'https://test.e-shequ.com/donghu/wechat/hexie/wechat/':
         /uat/.test(location.origin)?'https://uat.e-shequ.com/xsq/wechat/hexie/wechat/':
         'https://www.e-shequ.com/shijiazhuang/wechat/hexie/wechat/',
         
