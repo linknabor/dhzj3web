@@ -10,7 +10,7 @@ window.baseurl = {
     home:url+name+'/weixin/home/index.html?v=20160229',
     person:url+name+'/weixin/person/index.html?v=20160229',
     //home
-    message:url+name+'/weixin/wuye/index.html#/message"',
+    message:url+name+'/weixin/wuye/index.html#/message',
     //person
     conpons:url+name+'/weixin/group/onsalesindex.html',
     baoxiu:url+name+'/weixin/wuye/index.html?state=123#/butler?category=2',//报修
