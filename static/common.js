@@ -3,15 +3,15 @@
 var MasterConfig = function() {
     var t = {
 
-        baseUrl: "https://test.e-shequ.com/dhzj3/wechat/hexie/wechat/",
-        basePageUrl:"https://test.e-shequ.com/dhzj3/weixin/",
-        payPageFolder:"https://tste.e-shequ.com/pay/",
+        baseUrl: "https://uat.e-shequ.com/dhzj3/wechat/hexie/wechat/",
+        basePageUrl:"https://uat.e-shequ.com/dhzj3/weixin/",
+        payPageFolder:"https://uat.e-shequ.com/pay/",
         payPageSuffix:"zj3",
-        appId: "wx95f46f41ca5e570e",
+        appId: "wx9ffe0a2b5a64a285",
         oauthUrl: "https://open.weixin.qq.com/connect/oauth2/authorize?",
         oauthUrlPostFix:"&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect",
 		oauthUrlPostSilent:"&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
-        bindAppId: "wx95f46f41ca5e570e",
+        bindAppId: "wx9ffe0a2b5a64a285",
         baidu_map_key:"RUWUgrEEF5VjoaWsstMMZwOD",
         shop_name: "东湖e家园",
         is_debug:true
@@ -34,7 +34,7 @@ var Config = function() {
             no_goods: "更多新品正在陆续推出..."
         },
         user_info: {
-            avatar: "https://test.e-shequ.com/dhzj3/weixin/static/images/logo.jpg",
+            avatar: "https://uat.e-shequ.com/dhzj3/weixin/static/images/logo.jpg",
             nickname: "游客",
             levelname: "普通会员"
         },
@@ -44,7 +44,7 @@ var Config = function() {
             2 : "大楼VIP"
         },
         coupon:{
-            seedImg:"https://test.e-shequ.com/dhzj3/weixin/static/img/banner/banner_market_shuiguo.jpg"
+            seedImg:"https://uat.e-shequ.com/dhzj3/weixin/static/img/banner/banner_market_shuiguo.jpg"
         }
     },
     e = {};
