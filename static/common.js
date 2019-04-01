@@ -1,5 +1,4 @@
-// import wx from 'weixin-js-sdk';
-
+// import wx from 'weixin-js-sdk'
 var MasterConfig = function() {
     var t = {
 
@@ -403,4 +402,3 @@ window.common = {
 // checkBindAndBind();
 checkCodeAndLogin();
 common.setTitle(MasterConfig.C("shop_name") );
-

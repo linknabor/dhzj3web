@@ -6,10 +6,10 @@ var namepay='/dhzj3/weixin';
 
 window.baseurl = {
     URL:url+name+'/wechat/hexie/wechat/',
-    wuye:url+name+'/weixin/wuye/index.html?v=20160229',
+    wuye:url+name+'/weixin/wuye/index.html?v=20162299',
     home:url+name+'/weixin/home/index.html?v=20160229',
     person:url+name+'/weixin/person/index.html?v=20160229',
-    //home
+    //hom
     message:url+name+'/weixin/wuye/index.html#/message',
     //person
     conpons:url+name+'/weixin/group/onsalesindex.html',

@@ -3,7 +3,7 @@
 var MasterConfig = function() {
     var t = {
 
-        baseUrl: "https://uat.e-shequ.com/dhzj3/wechat/hexie/wechat/",
+        baseUrl: "https://uat.e-shequ.com/dhzj3/wechat/hexie/wechat",
         basePageUrl:"https://uat.e-shequ.com/dhzj3/weixin/",
         payPageFolder:"https://uat.e-shequ.com/pay/",
         payPageSuffix:"zj3",
@@ -251,7 +251,7 @@ function isRegisted(){
 
 function toRegisterAndBack(){
     var n = location.origin + common.removeParamFromUrl(["from", "bind", "code", "share_id", "isappinstalled", "state", "m", "c", "a"]);
-    location.href=MasterConfig.C('basePageUrl')+"wuye/index.html#/register?comeFrom="+encodeURIComponent(n);
+    location.href=MasterConfig.C('basePageUrl')+"person/index.html#/register?comeFrom="+encodeURIComponent(n);
 }
 
 var AJAXFlag = !0;
