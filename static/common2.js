@@ -157,14 +157,7 @@ function checkBindAndBind(){
         })
     }
 }
-/**变更才需要重设置*/
-function updateUserStatus(user) {
-    var duration = new Date().getTime()/1000 + 3600*24*30;
-    setCookie("UID", user.uid,  duration);
-    setCookie("currentAddrId", user.currentAddrId, duration);
-    setCookie("tel", user.tel, duration);
-    setCookie("shareCode", user.shareCode, duration);
-}
+
 //只更新地址
 function updateCurrentAddrId(addrId){
     var duration = new Date().getTime()/1000 + 3600*24*30;
@@ -228,11 +221,19 @@ window.common = {
             AJAXFlag = !1
         },
         function(x) {
-            updateUserStatus(x.result);
+            common.updateUserStatus(x.result);
             AJAXFlag = !0,
             location.href = location.origin +common.removeParamFromUrl(["code"])+common.addParamHsah();
         })
     },
+    /**变更才需要重设置*/
+updateUserStatus(user) {
+    var duration = new Date().getTime()/1000 + 3600*24*30;
+    setCookie("UID", user.uid,  duration);
+    setCookie("currentAddrId", user.currentAddrId, duration);
+    setCookie("tel", user.tel, duration);
+    setCookie("shareCode", user.shareCode, duration);
+},
      //入口程序 检查状态
     checkRegisterStatus:function(){
         if(!getCookie("UID")){
