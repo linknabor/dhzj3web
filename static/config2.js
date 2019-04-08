@@ -8,11 +8,7 @@ window.config={
          URL:url+name+'/wechat/hexie/wechat/',
     //公共的底部跳转
 
-
-    
     footer:{  
-
-
         wuye:url+name+'/weixin/wuye/index2.html?v=20162299',
         person:url+name+'/weixin/person/index2.html?v=20160229',
     },
