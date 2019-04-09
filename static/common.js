@@ -1,7 +1,7 @@
 //开发环境
 var MasterConfig = function() {
     var t = {
-        baseUrl: "https://test.e-shequ.com/dhzj3/wechat/hexie/wechat/",
+        baseUrl: "https://test.e-shequ.com/dhzj3/wechat/hexie/wechat",
         basePageUrl:"https://test.e-shequ.com/dhzj3/weixin/",
         payPageFolder:"https://test.e-shequ.com/pay/",
         payPageSuffix:"zj3",
@@ -148,7 +148,7 @@ function checkBindAndBind(){
     var o = getData.code;
     if(b&&o) {
         common.alert("start api bind"),
-        common.invokeApi("POST", "bindWechat/"+MasterConfig.C("bindAppId")+"/" + o, null,
+        common.invokeApi("POST", "bindWechat/" + o, null,
             null,
         function(x) {
             common.alert("api binded")
