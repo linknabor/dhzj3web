@@ -9,12 +9,12 @@ window.config = {
        
     footer:{
         person:url+name+'/weixin/person/index.html?v=20160229',
+        home:url+name+'/weixin/home/index.html?v=20160229',
     },
     //person
     gotoGroupDetail:url+name+'/weixin/group/rgroupinvite.html?',//团购详情
-    home:url+name+'/weixin/home/index.html?v=20160229',
      //wuye支付成功
-     wuye_zhifu:{
+    wuye_zhifu :{
         url:url+name+'/weixin/wuye/index2.html?state=123#/payEnquiry'
     }
 
