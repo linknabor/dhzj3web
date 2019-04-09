@@ -147,12 +147,12 @@ function checkBindAndBind(){
     var b = getData.bind;
     var o = getData.code;
     if(b&&o) {
-        // common.alert("start api bind"),
+        common.alert("start api bind"),
         common.invokeApi("POST", "bindWechat/"+MasterConfig.C("bindAppId")+"/" + o, null,
             null,
         function(x) {
-            // common.alert("api binded")
-            // console.log(location.origin);
+            common.alert("api binded")
+            console.log(location.origin);
             location.href = location.origin +common.removeParamFromUrl(["bind","code"]);
         })
     }
@@ -312,6 +312,6 @@ updateUserStatus(user) {
 
 };
 
-// checkBindAndBind();
+checkBindAndBind();
 checkCodeAndLogin();
 common.setTitle(MasterConfig.C("shop_name") );
