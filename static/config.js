@@ -21,7 +21,7 @@ window.config = {
       },
       //物业支付跳转
       wuye_zhifu:{
-          payment:url+namepay+'/dhzj3paymentdetail.html?#/?'//物业支付成功跳转
+          payment:url+namepay+'/dhzj3wuyepay.html?#/?'//物业支付成功跳转
       },
       //服务跳转资讯
       home_message:{
