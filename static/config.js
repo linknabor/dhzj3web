@@ -2,7 +2,7 @@ var url=/127|test/.test(location.origin)?'https://test.e-shequ.com':
     /uat/.test(location.origin)?'https://uat.e-shequ.com':
     'https://www.e-shequ.com';
 var name='/dhzj3';
-var namepay='/pay';
+var namepay='/dhzj3/weixin';
 
 window.config = {
       //公共的请求地址
