@@ -138,7 +138,7 @@ function checkCodeAndLogin(){
     var b = getData.bind;
     var o = getData.code;
     console.log(getData)
-    if(!b&&o){
+    if(!b&&o== null){
         common.login();
         return false;
     } else {
