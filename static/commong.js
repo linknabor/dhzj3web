@@ -138,11 +138,20 @@ function checkCodeAndLogin(){
     var b = getData.bind;
     var o = getData.code;
     console.log(getData)
-    if(!b&&o== null){
+    if(!b&&o == undefined){
         common.login();
         return false;
     } else {
-        return true;
+        common.invokeApi("POST", "login/" + o, null,
+        function() {
+            AJAXFlag = !1
+        },
+        function(x) {
+            common.updateUserStatus(x.result);
+            AJAXFlag = !0,
+            location.href = location.origin +common.removeParamFromUrl(["code"])+common.addParamHsah();
+        })
+        return false;
     }
 }
  //子公众号  挂载父级 
