@@ -18,7 +18,7 @@ var MasterConfig = function() {
         baseUrl: "https://test.e-shequ.com/dhzj3/wechat/hexie/wechat/",
         basePageUrl:"https://test.e-shequ.com/dhzj3/weixin/",
         payPageFolder:"https://test.e-shequ.com/pay/",
-        payPageSuffix:"baofang",
+        payPageSuffix:"dhzj3",
         appId: "wx95f46f41ca5e570e",
         oauthUrl: "https://open.weixin.qq.com/connect/oauth2/authorize?",
         oauthUrlPostFix:"&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect",
@@ -135,10 +135,10 @@ function checkFromShare(salePlanType,salePlanId) {
 /**本地没标识或者40001需要重新登录|换号是否还保留cookie*/
 function checkCodeAndLogin(){
     var getData = common._GET();
-    console.log(getData)
     var b = getData.bind;
     var o = getData.code;
-    if(!b&&o == undefined){
+    console.log(getData)
+    if(!b&&o){
         common.login();
         return false;
     } else {
