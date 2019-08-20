@@ -140,11 +140,9 @@ function checkCodeAndLogin(){
     var o = getData.code;
     alert(getData)
     if(!b&&o){
-        alert('checkCodeAndLogin:1')
         common.login();
         return false;
     } else {
-        alert('checkCodeAndLogin:2')
         return true;
     }
 }
@@ -240,10 +238,8 @@ window.common = {
         },
         function(x) {
             common.updateUserStatus(x.result);
-            AJAXFlag = !0,
-            alert(location.origin)
-            alert(location.origin +common.removeParamFromUrl(["code"]))
-            location.href = location.origin +common.removeParamFromUrl(["code"])+common.addParamHsah();
+            // AJAXFlag = !0,
+            // location.href = location.origin +common.removeParamFromUrl(["code"])+common.addParamHsah();
         },
         function() {
             alert('login失败')
