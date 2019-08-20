@@ -91,6 +91,7 @@ function dealWithAjaxData(o, e, i, r) {
 }
 //没授权在授权登录
 function reLogin() {
+    alert('reLogin');
     setCookie("UID", "", 0),
     common.login(!0)
 }
@@ -137,11 +138,13 @@ function checkCodeAndLogin(){
     var getData = common._GET();
     var b = getData.bind;
     var o = getData.code;
-    console.log(getData)
+    alert(getData)
     if(!b&&o){
+        alert('checkCodeAndLogin:1')
         common.login();
         return false;
     } else {
+        alert('checkCodeAndLogin:2')
         return true;
     }
 }
@@ -238,7 +241,13 @@ window.common = {
         function(x) {
             common.updateUserStatus(x.result);
             AJAXFlag = !0,
+            alert(location.origin)
+            alert(location.origin +common.removeParamFromUrl(["code"]))
             location.href = location.origin +common.removeParamFromUrl(["code"])+common.addParamHsah();
+        },
+        function() {
+            alert('login失败')
+            return
         })
     },
     /**变更才需要重设置*/
