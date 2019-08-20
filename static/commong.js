@@ -138,18 +138,8 @@ function checkCodeAndLogin(){
     var b = getData.bind;
     var o = getData.code;
     console.log(getData)
-    if(!b&&o == null ){
+    if(!b&&o){
         common.login();
-
-        common.invokeApi("POST", "login/" + o, null,
-        function() {
-            AJAXFlag = !1
-        },
-        function(x) {
-            common.updateUserStatus(x.result);
-            AJAXFlag = !0,
-            location.href = location.origin +common.removeParamFromUrl(["code"])+common.addParamHsah();
-        })
         return false;
     } else {
         return true;
@@ -367,5 +357,5 @@ updateUserStatus(user) {
 };
 
 checkBindAndBind();
-// checkCodeAndLogin();
+checkCodeAndLogin();
 common.setTitle(MasterConfig.C("shop_name") );
